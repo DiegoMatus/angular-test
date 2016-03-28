@@ -27,7 +27,7 @@ app.controller("ToDoController", ["$scope", "localStorageService", function($sco
 	/* =========================================================================*/
 	/*	Métodos
 	/* =========================================================================*/
-	$scope.$watchCollection('localStorageList', function(oldValue, newValue){
+	$scope.$watchCollection('toDoList', function(oldValue, newValue){
 		localStorageService.set('localStorageList', $scope.toDoList);
 	});
 
