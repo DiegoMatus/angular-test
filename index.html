@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ToDoList">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hola mundo con angular 1.5</title>
+	<link rel="stylesheet" href="">
+	<!--Cargar Angular al inicio para evitar que se vean sus directivas al cargar el sitio-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+</head>
+<body ng-controller="ToDoController">
+	<h1>Lista de actividades</h1>
+
+	<section id="lista">
+		<div class="actividades">
+			<ul>
+				<li ng-repeat="activity in toDoList">
+					{{ activity.description }} - <span>{{ activity.date | date: 'short' }}</span>
+				</li>
+			</ul>
+		</div>
+
+		<form ng-submit="addActivity()" accept-charset="utf-8">
+			<input ng-model="newActivity.description" type="text" placeholder="Ingresa una actividad">
+			<input ng-model="newActivity.date" type="datetime-local">
+			<input type="submit" value="Guardar actividad">
+		</form>
+
+		<button ng-click="cleanList()">Limpiar</button>
+	</section>
+
+
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+	<script src="controller.js"></script>
+</body>
+</html>
