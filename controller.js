@@ -27,17 +27,17 @@ app.controller("ToDoController", ["$scope", "localStorageService", function($sco
 	/* =========================================================================*/
 	/*	Métodos
 	/* =========================================================================*/
-	
-	
+	$scope.$watchCollection('localStorageList', function(oldValue, newValue){
+		localStorageService.set('localStorageList', $scope.toDoList);
+	});
+
 	$scope.addActivity = function(){
 		$scope.toDoList.push($scope.newActivity);
 		$scope.newActivity = {};
-		localStorageService.set('localStorageList', $scope.toDoList);
 	}
 
 	$scope.cleanList = function(){
 		$scope.toDoList = [];
-		localStorageService.set('localStorageList', $scope.toDoList);
 	}
 
 }]);
